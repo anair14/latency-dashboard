@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Latency Dashboard</h2>
+        <p>Welcome to your dashboard. Below are your monitored endpoints.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Endpoint</th>
+                    <th>Status</th>
+                    <th>Latency (ms)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Endpoints}}
+                <tr>
+                    <td>{{.URL}}</td>
+                    <td>{{.Status}}</td>
+                    <td>{{.Latency}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+
+        <a href="/settings">Settings</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
+

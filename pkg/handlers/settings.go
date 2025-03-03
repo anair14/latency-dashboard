@@ -4,9 +4,9 @@ import (
     "database/sql"
     "log"
     "net/http"
-    "session"
-    "templates"
-    "config"
+    "github.com/gorillas/sessions"
+    "github.com/anair14/latency-dashboard/templates"
+    "github.com/anair14/latency-dashboard/config"
 
     _ "github.com/mattn/go-sqlite3"
 )

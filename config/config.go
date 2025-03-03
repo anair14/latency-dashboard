@@ -1,23 +1,25 @@
 package config
 
 import (
-    "os"
+	"log"
+	"os"
+
+	"github.com/joho/godotenv"
 )
 
-// Database Configuration
-var DBPath = "./database/data.db"
+// LoadConfig loads environment variables from a .env file
+func LoadConfig() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Warning: No .env file found, using default values.")
+	}
+}
 
-// Authentication Configuration
-var SessionSecret = getEnv("SESSION_SECRET", "supersecretkey")
-
-// Default Latency Threshold
-var DefaultLatencyThreshold = 500
-
-// Helper function to get environment variables with a default fallback
-func getEnv(key, fallback string) string {
-    if value, exists := os.LookupEnv(key); exists {
-        return value
-    }
-    return fallback
+// GetEnv retrieves an environment variable or returns a default value
+func GetEnv(key, fallback string) string {
+	if value, exists := os.LookupEnv(key); exists {
+		return value
+	}
+	return fallback
 }
 
